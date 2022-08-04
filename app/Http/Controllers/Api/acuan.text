@@ -1,0 +1,80 @@
+public function index()
+{
+return response([
+'status' => true,
+'message' => 'valid token',
+'data' => ::all()
+]);
+}
+public function show(Request $request)
+{
+return response([
+'status' => true,
+'message' => 'valid token',
+'data' => ::where([
+'id' => $request->id
+])->get()
+]);
+}
+public function store(Request $request)
+{
+$validation = Validator($request->all(), [
+'' => 'required',
+]);
+if ($validation->fails()) {
+return response([
+'status' => false,
+'validation' => $validation->errors()
+]);
+}
+$ = ::insert([
+'' => $request->,
+]);
+if ($) {
+return response([
+'inserting' => 'success'
+]);
+}
+}
+public function update(Request $request)
+{
+$validation = Validator($request->all(), [
+'' => 'required',
+]);
+if ($validation->fails()) {
+return response([
+'status' => false,
+'validation' => $validation->errors()
+]);
+}
+$ = ::where([
+'' => $request->,
+])->update([
+'' => $request->,
+]);
+if ($) {
+return response([
+'updating' => 'success'
+]);
+}
+}
+public function destroy(Request $request)
+{
+$validation = Validator($request->all(), [
+'id' => 'required'
+]);
+if ($validation->fails()) {
+return response([
+'status' => false,
+'validation' => $validation->errors()
+]);
+}
+$ = ::where([
+'id' => $request->id
+])->delete();
+if ($) {
+return response([
+'delete' => 'success'
+]);
+}
+}
