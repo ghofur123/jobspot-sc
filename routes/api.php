@@ -54,6 +54,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/upload', 'Api\Upload_files@store');
     Route::put('/upload', 'Api\Upload_files@update');
     Route::delete('/upload', 'Api\Upload_files@destroy');
+
+    // save
+    // save lowongan by user id
+    Route::get('/save/{user_id}', 'Api\Save_api@show');
+    // all = hapus semua sesuai user_id
+    // byid = sesuai dengan id yang di hapus
+    Route::delete('/save', 'Api\Save_api@destroy');
 });
 // Users_api 
 Route::post('/users', 'Api\Users_api@store');

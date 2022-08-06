@@ -28,13 +28,13 @@ class Login_users extends Controller
         if ($user) {
             if (!empty($user->email_verified_at)) {
                 return response([
+                    'level' => $user->level,
                     'message' => 'success',
                     'token' => $user->createToken('ApiToken')->plainTextToken
                 ], 200);
             } else {
                 return response([
                     'message' => 'Email Belum Di verifikasi',
-                    // 'token' => $user->createToken('ApiToken')->plainTextToken
                 ], 400);
             }
         } else {
