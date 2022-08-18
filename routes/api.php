@@ -61,6 +61,14 @@ Route::middleware('auth:sanctum')->group(function () {
     // all = hapus semua sesuai user_id
     // byid = sesuai dengan id yang di hapus
     Route::delete('/save', 'Api\Save_api@destroy');
+
+
+    // lowongan
+    Route::get('/lowongan', 'Api\Lowongan_Api@index');
+    Route::get('/lowongan/{id}', 'Api\Lowongan_Api@show');
+    Route::post('/lowongan', 'Api\Lowongan_Api@store');
+    Route::put('/lowongan', 'Api\Lowongan_Api@update');
+    Route::delete('/lowongan', 'Api\Lowongan_Api@destroy');
 });
 // Users_api 
 Route::post('/users', 'Api\Users_api@store');
@@ -74,3 +82,7 @@ Route::post('/login', 'Api\Login_users@login');
 Route::get('/provinsi', 'Api\Wilayah_api@provinsi');
 Route::get('/kabupaten', 'Api\Wilayah_api@kabupaten_kota');
 Route::get('/kecamatan', 'Api\Wilayah_api@kecamatan');
+
+// lowongan action
+Route::get('/loker/{id}/{title}', 'Api\Lowongan_action@by_id');
+Route::get('/search/{title}', 'Api\Lowongan_action@search');
