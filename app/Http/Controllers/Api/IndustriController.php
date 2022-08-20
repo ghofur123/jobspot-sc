@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Model\Industri_model;
+use App\Http\Requests\IndustriRequest;
+use App\Model\Industri;
 use Illuminate\Http\Request;
 
-class Industri_api extends Controller
+class IndustriController extends Controller
 {
     public function index()
     {
         return response([
             'status' => true,
             'message' => 'valid token',
-            'data' => Industri_model::all()
+            'data' => Industri::all()
         ]);
     }
     public function show(Request $request)
@@ -21,7 +22,7 @@ class Industri_api extends Controller
         return response([
             'status' => true,
             'message' => 'valid token',
-            'data' => Industri_model::where([
+            'data' => Industri::where([
                 'id' => $request->id
             ])->get()
         ]);
@@ -37,7 +38,8 @@ class Industri_api extends Controller
                 'validation' => $validation->errors()
             ]);
         }
-        $industri = Industri_model::insert([
+
+        $industri = Industri::insert([
             'nama' => $request->nama,
         ]);
         if ($industri) {
@@ -57,7 +59,7 @@ class Industri_api extends Controller
                 'validation' => $validation->errors()
             ]);
         }
-        $industri = Industri_model::where([
+        $industri = Industri::where([
             'id' => $request->id,
         ])->update([
             'nama' => $request->nama,
@@ -79,7 +81,7 @@ class Industri_api extends Controller
                 'validation' => $validation->errors()
             ]);
         }
-        $industri = Industri_model::where([
+        $industri = Industri::where([
             'id' => $request->id
         ])->delete();
         if ($industri) {

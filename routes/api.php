@@ -28,11 +28,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/users', 'Api\Users_api@destroy');
 
     // industri
-    Route::get('/industri', 'Api\Industri_api@index');
-    Route::get('/industri/{id}', 'Api\Industri_api@show');
-    Route::post('/industri', 'Api\Industri_api@store');
-    Route::put('/industri', 'Api\Industri_api@update');
-    Route::delete('/industri', 'Api\Industri_api@destroy');
+    Route::get('/industri', 'Api\IndustriController@index');
+    Route::get('/industri/{id}', 'Api\IndustriController@show');
+    Route::post('/industri', 'Api\IndustriController@store');
+    Route::put('/industri', 'Api\IndustriController@update');
+    Route::delete('/industri', 'Api\IndustriController@destroy');
 
     // pendidikan
     Route::get('/pendidikan', 'Api\Pendidikan_api@index');
@@ -79,10 +79,12 @@ Route::post('/resetpass', 'Api\Users_mail@reset_password');
 Route::post('/login', 'Api\Login_users@login');
 
 // wilayah
-Route::get('/provinsi', 'Api\Wilayah_api@provinsi');
-Route::get('/kabupaten', 'Api\Wilayah_api@kabupaten_kota');
-Route::get('/kecamatan', 'Api\Wilayah_api@kecamatan');
+Route::get('/provinsi', 'Api\WilayahController@provinsi');
+Route::get('/kabupaten/{id}', 'Api\WilayahController@kabupaten_kota');
+Route::get('/kecamatan/{id}', 'Api\WilayahController@kecamatan');
 
 // lowongan action
 Route::get('/loker/{id}/{title}', 'Api\Lowongan_action@by_id');
 Route::get('/search/{title}', 'Api\Lowongan_action@search');
+Route::get('/lokasi/{lokasi}', 'Api\Lowongan_action@lokasi');
+Route::get('/bidang/{bidang_pekerjaan}', 'Api\Lowongan_action@bidang_pekerjaan');

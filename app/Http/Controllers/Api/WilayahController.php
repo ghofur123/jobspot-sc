@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class Wilayah_api extends Controller
+class WilayahController extends Controller
 {
     public function index()
     {
