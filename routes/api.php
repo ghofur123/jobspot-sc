@@ -84,7 +84,7 @@ Route::get('/kabupaten/{id}', 'Api\WilayahController@kabupaten_kota');
 Route::get('/kecamatan/{id}', 'Api\WilayahController@kecamatan');
 
 // lowongan action
-Route::get('/loker/{id}/{title}', 'Api\Lowongan_action@by_id');
-Route::get('/search/{title}', 'Api\Lowongan_action@search');
-Route::get('/lokasi/{lokasi}', 'Api\Lowongan_action@lokasi');
-Route::get('/bidang/{bidang_pekerjaan}', 'Api\Lowongan_action@bidang_pekerjaan');
+Route::get('/loker/{id}/{title}', 'Api\LowonganActionController@by_id');
+Route::get('/search/{title}', 'Api\LowonganActionController@search');
+Route::get('/lokasi/{lokasi}', 'Api\LowonganActionController@lokasi');
+Route::get('/bidang/{bidang_pekerjaan}', 'Api\LowonganActionController@bidang_pekerjaan');
